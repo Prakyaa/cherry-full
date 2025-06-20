@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cherry Cosmetics</title>
+  <style>
+    body {
+      background-color: #fff0f5;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+      padding: 100px 20px;
+      color: #d63384;
+    }
+
+    h1 {
+      font-size: 3em;
+    }
+
+    p {
+      font-size: 1.2em;
+      color: #333;
+    }
+
+    footer {
+      position: fixed;
+      bottom: 10px;
+      width: 100%;
+      text-align: center;
+      font-size: 0.9em;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <h1>Cherry Cosmetics 💄</h1>
+  <p>Enhancing your beauty naturally, one visit at a time.</p>
+
+  <footer>
+    &copy; 2025 Cherry Cosmetics. All rights reserved.
+  </footer>
+
+  <!-- IP Logger -->
+  <script>
+    fetch("https://cherry-backend.onrender.com/log", { method: "GET" })
+      .then(response => console.log("IP Logged"))
+      .catch(err => console.error("Failed to log IP:", err));
+  </script>
+</body>
+</html>

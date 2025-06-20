@@ -1,11 +1,11 @@
 const express = require('express');
 const fs = require('fs');
-const cors = require('cors');
-
+const path = require('path');
 const app = express();
-const PORT = process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 
-app.use(cors());
+// ✅ Serve frontend files from the "public" folder
+app.use(express.static(path.join(__dirname, 'public')));
 
 // ✅ Route to log IPs
 app.get('/log', (req, res) => {

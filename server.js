@@ -4,35 +4,29 @@ const path = require('path');
 const app = express();
 const port = process.env.PORT || 3000;
 
-// ✅ Serve frontend files from the "public" folder
+// ✅ Serve frontend files from "public" folder
 app.use(express.static(path.join(__dirname, 'public')));
 
-// ✅ Route to log IPs
+// ✅ Log IP address when '/log' is accessed
 app.get('/log', (req, res) => {
-  const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+  const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
   const timestamp = new Date().toISOString();
-  const logEntry = `${timestamp} - ${ip}\n`;
+  const logEntry = ${timestamp} - ${ip}\n;
   fs.appendFile('ip-log.txt', logEntry, err => {
-    if (err) {
-      console.error('Failed to log IP:', err);
-      return res.status(500).send('Error logging IP');
-    }
-    console.log('Logged:', logEntry.trim());
-    res.send('IP Logged');
+    if (err) console.error(err);
   });
+  res.sendStatus(200);
 });
 
-// ✅ Route to view all logged IPs
+// ✅ Show collected IPs
 app.get('/view-ips', (req, res) => {
   fs.readFile('ip-log.txt', 'utf8', (err, data) => {
-    if (err) {
-      console.error('Failed to read IP log:', err);
-      return res.status(500).send('Error reading IPs');
-    }
-    res.send(`<pre>${data}</pre>`);
+    if (err) return res.send('No IPs logged yet.');
+    res.send(<pre>${data}</pre>);
   });
 });
 
-app.listen(PORT, () => {
-  console.log(`✅ Server running on port ${PORT}`);
+// ✅ Start server
+app.listen(port, () => {
+  console.log(✅ Server running on port ${port});
 });
